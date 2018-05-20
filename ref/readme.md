@@ -80,3 +80,34 @@ func swap_producr_no_ref_address(x, y, product int) (int, int, int) {
 
 }
 ```
+
+
+# struct类型
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+
+	zhangsan := person{"zhansan", 1111} // person类型值
+
+	lisi := new(person) // 指向person的指针
+	lisi.name, lisi.id = "lisi", 123
+
+	wangwu := &person{"wangwu", 456} // 指向person的指针
+
+	fmt.Printf("%v \n", zhangsan)      // {zhansan 1111}
+	fmt.Printf("%v  %v", lisi, wangwu) // &{lisi 123}  &{wangwu 456}
+
+}
+
+type person struct {
+	name string
+	id   int
+}
+
+// new(Type) = &Type{}   所做的操作是相同的
+
+```

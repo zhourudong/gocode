@@ -94,7 +94,7 @@ func main() {
 	zhangsan := person{"zhansan", 1111} // person类型值
 
 	lisi := new(person) // 指向person的指针
-	lisi.name, lisi.id = "lisi", 123
+	lisi.name, lisi.id = "lisi", 123  // (*lisi).name = "lisi"  (*lisi).id= 123 
 
 	wangwu := &person{"wangwu", 456} // 指向person的指针
 

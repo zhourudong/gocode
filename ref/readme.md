@@ -37,3 +37,46 @@ func main() {
 ```
 
 ![指针](https://raw.githubusercontent.com/zhourudong/gocode/master/ref.jpg)
+
+# 交换值
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+
+	i := 9
+	j := 5
+	product := 0
+
+	swap_producr(&i, &j, &product)
+	fmt.Println(i, j, product) // 5 9 45
+
+	// 非引用交换值,  对于大数组特别🎺性能内存
+	i1 := 9
+	j1 := 5
+	product1 := 0
+
+	i1, j1, product1 = swap_producr_no_ref_address(i1, j1, product1)
+	fmt.Println(i1, j1, product1) // 5 9 45
+
+}
+
+func swap_producr(x, y, product *int) {
+	if *x > *y {
+		*x, *y = *y, *x
+	}
+	*product = *x * *y
+}
+
+func swap_producr_no_ref_address(x, y, product int) (int, int, int) {
+	if x > y {
+		x, y = y, x
+	}
+	product = x * y
+	return x, y, product
+
+}
+```

@@ -47,36 +47,44 @@ import "fmt"
 
 func main() {
 
+	fmt.Println("以指针方式修改值(地址引用)")
 	i := 9
 	j := 5
 	product := 0
+	fmt.Printf("地址: i=%p, j=%p, product=%p\n", &i, &j, &product)
 
 	swap_producr(&i, &j, &product)
+
 	fmt.Println(i, j, product) // 5 9 45
 
+	fmt.Println()
+	fmt.Println("以传值方式修改值")
 	// 非引用交换值,  对于大数组特别🎺性能内存
 	i1 := 9
 	j1 := 5
 	product1 := 0
 
+	fmt.Printf("地址: i1=%p, j1=%p, product1=%p\n", &i1, &j1, &product1)
 	i1, j1, product1 = swap_producr_no_ref_address(i1, j1, product1)
 	fmt.Println(i1, j1, product1) // 5 9 45
 
 }
 
-func swap_producr(x, y, product *int) {
-	if *x > *y {
-		*x, *y = *y, *x
+func swap_producr(i, j, product *int) {
+	fmt.Printf("指针类型接收到的地址: %p, %p,%p\n", i, j, product)
+	if *i > *j {
+		*i, *j = *j, *i
 	}
-	*product = *x * *y
+	*product = *i * *j
 }
 
-func swap_producr_no_ref_address(x, y, product int) (int, int, int) {
-	if x > y {
-		x, y = y, x
+func swap_producr_no_ref_address(i1, j1, product1 int) (int, int, int) {
+	fmt.Printf("值类型接收到的地址: %p, %p,%p\n", &i1, &j1, &product1)
+	if i1 > j1 {
+		i1, j1 = j1, i1
 	}
-	product = x * y
-	return x, y, product
+	product1 = i1 * j1
+	return i1, j1, product1
 
 }
 ```

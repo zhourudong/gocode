@@ -30,3 +30,15 @@ func find_first_last_string() {
 }
 ```
 
+# 字符串分割
+
+```go
+func strings_pkg() {
+	names := "中国.北京.天津"
+	//	分割字符串
+	for _, name := range strings.Split(names, ".") {
+		fmt.Println(name)
+	}
+}
+
+```
